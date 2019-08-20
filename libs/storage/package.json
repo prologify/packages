@@ -7,5 +7,15 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/prologify/packages.git"
-  }
+  },
+  "keywords": [
+    "browser",
+    "storage",
+    "async",
+    "browser-storeage",
+    "localstorage",
+    "sessionstorage",
+    "websql",
+    "indexeddb"
+  ]
 }
