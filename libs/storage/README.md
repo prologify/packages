@@ -11,11 +11,11 @@
 ## Packages
 
 - [@prologify/storage/core](https://github.com/prologify/packages/tree/master/libs/storage/core)
-- [@prologify/storage/localstorage-driver](https://github.com/prologify/storage/tree/master/libs/storage/localstorage-driver)
-- [@prologify/storage/sessionstorage-driver](https://github.com/prologify/storage/tree/master/libs/storage/sessionstorage-driver)
-- [@prologify/storage/websql-driver](https://github.com/prologify/storage/tree/master/libs/storage/websql-driver)
-- [@prologify/storage/indexeddb-driver](https://github.com/prologify/storage/tree/master/libs/storage/indexeddb-driver)
-- [@prologify/storage/ngx](https://github.com/prologify/storage/tree/master/libs/storage/ngx)
+- [@prologify/storage/localstorage-driver](https://github.com/prologify/packages/tree/master/libs/storage/localstorage-driver)
+- [@prologify/storage/sessionstorage-driver](https://github.com/prologify/packages/tree/master/libs/storage/sessionstorage-driver)
+- [@prologify/storage/websql-driver](https://github.com/prologify/packages/tree/master/libs/storage/websql-driver)
+- [@prologify/storage/indexeddb-driver](https://github.com/prologify/packages/tree/master/libs/storage/indexeddb-driver)
+- [@prologify/storage/ngx](https://github.com/prologify/packages/tree/master/libs/storage/ngx)
 
 ## Install
 
