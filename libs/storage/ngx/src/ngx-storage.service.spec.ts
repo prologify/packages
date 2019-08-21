@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { NgxStorageService } from './ngx-storage.service';
 
-describe('NgxBrowserStorageService', () => {
+describe('NgxStorageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

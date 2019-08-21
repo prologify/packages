@@ -1,4 +1,4 @@
-export interface BrowserStorageEventOptions {
+export interface StorageEventOptions {
   name: string;
   storeName: string;
   version: number;
@@ -8,21 +8,21 @@ export interface BrowserStorageEventOptions {
   isCrossTab?: boolean;
 }
 
-export enum BrowserStorageEventTypes {
+export enum StorageEventTypes {
   Default,
   SetItem,
   RemoveItem,
   Clear
 }
 
-function getEventFromJSON(json: BrowserStorageEventOptions & { type: BrowserStorageEventTypes }): StorageEvents {
+function getEventFromJSON(json: StorageEventOptions & { type: StorageEventTypes }): StorageEvents {
   switch (json.type) {
-    case BrowserStorageEventTypes.Clear:
-      return new ClearBrowserStorageEvent(json);
-    case BrowserStorageEventTypes.SetItem:
-      return new SetItemBrowserStorageEvent(json);
-    case BrowserStorageEventTypes.RemoveItem:
-      return new RemoveItemBrowserStorageEvent(json);
+    case StorageEventTypes.Clear:
+      return new ClearStorageEvent(json);
+    case StorageEventTypes.SetItem:
+      return new SetItemStorageEvent(json);
+    case StorageEventTypes.RemoveItem:
+      return new RemoveItemStorageEvent(json);
     default:
       return new CustomStorageEvent(json);
   }
@@ -36,9 +36,9 @@ export class CustomStorageEvent<T = any> {
   public readonly oldValue: T;
   public readonly newValue: T;
   public isCrossTab: boolean;
-  public type: BrowserStorageEventTypes = BrowserStorageEventTypes.Default;
+  public type: StorageEventTypes = StorageEventTypes.Default;
 
-  constructor({ name, storeName, version, key, oldValue, newValue, isCrossTab = false }: BrowserStorageEventOptions) {
+  constructor({ name, storeName, version, key, oldValue, newValue, isCrossTab = false }: StorageEventOptions) {
     this.name = name;
     this.storeName = storeName;
     this.version = version;
@@ -65,7 +65,7 @@ export class CustomStorageEvent<T = any> {
                     oldValue = this.oldValue,
                     newValue = this.newValue,
                     isCrossTab = this.isCrossTab
-                  }: Partial<BrowserStorageEventOptions>): StorageEvents {
+                  }: Partial<StorageEventOptions>): StorageEvents {
 
     return getEventFromJSON({
       type: this.type,
@@ -80,20 +80,20 @@ export class CustomStorageEvent<T = any> {
   }
 }
 
-export class SetItemBrowserStorageEvent extends CustomStorageEvent {
-  public type: BrowserStorageEventTypes = BrowserStorageEventTypes.SetItem;
+export class SetItemStorageEvent extends CustomStorageEvent {
+  public type: StorageEventTypes = StorageEventTypes.SetItem;
 }
 
-export class RemoveItemBrowserStorageEvent extends CustomStorageEvent {
-  public type: BrowserStorageEventTypes = BrowserStorageEventTypes.RemoveItem;
+export class RemoveItemStorageEvent extends CustomStorageEvent {
+  public type: StorageEventTypes = StorageEventTypes.RemoveItem;
 }
 
-export class ClearBrowserStorageEvent extends CustomStorageEvent {
-  public type: BrowserStorageEventTypes = BrowserStorageEventTypes.Clear;
+export class ClearStorageEvent extends CustomStorageEvent {
+  public type: StorageEventTypes = StorageEventTypes.Clear;
 }
 
 export type StorageEvents =
   CustomStorageEvent |
-  SetItemBrowserStorageEvent |
-  RemoveItemBrowserStorageEvent |
-  ClearBrowserStorageEvent;
+  SetItemStorageEvent |
+  RemoveItemStorageEvent |
+  ClearStorageEvent;

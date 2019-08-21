@@ -1,9 +1,9 @@
 import {
   CustomStorageEvent,
   StorageEvents,
-  ClearBrowserStorageEvent,
-  RemoveItemBrowserStorageEvent,
-  SetItemBrowserStorageEvent
+  ClearStorageEvent,
+  RemoveItemStorageEvent,
+  SetItemStorageEvent
 } from './custom-storage-event';
 import { StorageOptions } from './storage-options';
 import { Driver } from './driver';
@@ -53,7 +53,7 @@ export class Storage implements Driver {
   public async clear(): Promise<void> {
     await this._driver.clear();
 
-    const event = new ClearBrowserStorageEvent({
+    const event = new ClearStorageEvent({
       name: this.options.name,
       storeName: this.options.storeName,
       version: this.options.version,
@@ -98,7 +98,7 @@ export class Storage implements Driver {
 
     await this._driver.removeItem(key);
 
-    const event = new RemoveItemBrowserStorageEvent({
+    const event = new RemoveItemStorageEvent({
       name: this.options.name,
       storeName: this.options.storeName,
       version: this.options.version,
@@ -118,7 +118,7 @@ export class Storage implements Driver {
 
     const result = await this._driver.setItem<T>(key, item);
 
-    const event = new SetItemBrowserStorageEvent({
+    const event = new SetItemStorageEvent({
       name: this.options.name,
       storeName: this.options.storeName,
       version: this.options.version,

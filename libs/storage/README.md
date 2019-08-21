@@ -27,11 +27,11 @@ $ npm i @prologify/storage
 ## Example
 
 ```typescript
-import { BrowserStorage } from '@prologify/storage/core';
+import { Storage } from '@prologify/storage/core';
 import { LocalstorageDriver } from '@prologify/storage/localstorage-driver';
 import { WebsqlDriver } from '@prologify/storage/websql-driver';
 
-const storage = new BrowserStorage({
+const storage = new Storage({
   name: 'myDb',
   storeName: 'myStore',
   version: 1,
@@ -52,7 +52,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NgxBrowserStorageModule, NgxBrowserStorageService } from '@prologify/storage/ngx';
+import { NgxStorageModule, NgxStorageService } from '@prologify/storage/ngx';
 import { LocalstorageDriver } from '@prologify/storage/localstorage-driver';
 import { mergeMap, tap } from 'rxjs/operators';
 
@@ -62,7 +62,7 @@ import { mergeMap, tap } from 'rxjs/operators';
   ],
   imports: [
     BrowserModule,
-    NgxBrowserStorageModule.forRoot({
+    NgxStorageModule.forRoot({
       version: 0,
       storeName: 'test',
       name: 'test',
@@ -73,7 +73,7 @@ import { mergeMap, tap } from 'rxjs/operators';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(storage: NgxBrowserStorageService) {
+  constructor(storage: NgxStorageService) {
     storage.setItem('a', 1).pipe(
       tap(console.log),
       mergeMap(() => storage.getItem('a')),
