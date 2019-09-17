@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@prologify/storage": ["libs/storage/src/index.ts"],
-      "@prologify/storage/*": ["libs/storage/*"]
+      "@prologify/storage/*": ["libs/storage/*"],
+      "@prologify/animations": ["libs/animations/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

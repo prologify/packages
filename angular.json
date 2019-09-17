@@ -149,6 +149,44 @@
         }
       },
       "schematics": {}
+    },
+    "animations": {
+      "projectType": "library",
+      "root": "libs/animations",
+      "sourceRoot": "libs/animations/src",
+      "prefix": "prologify",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/animations/tsconfig.lib.json",
+            "project": "libs/animations/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/animations/tsconfig.lib.json",
+              "libs/animations/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/animations/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/animations/jest.config.js",
+            "tsConfig": "libs/animations/tsconfig.spec.json",
+            "setupFile": "libs/animations/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
